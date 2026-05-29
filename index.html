@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WeaveFox | AI Agent Infra</title>
+    <title>WeaveFox | AI Agent 基础设施</title>
     <meta
       name="description"
-      content="WeaveFox 致力于构建稳定、高效、可观测的 AI Agent 基础设施，让团队更快把智能体落地到真实业务。"
+      content="WeaveFox 为团队提供 AI Agent 开发、评估与生产运行基础设施，帮助智能体更快落地真实业务。"
     />
     <link
       rel="icon"
@@ -15,13 +15,11 @@
     />
     <style>
       :root {
-        --bg-1: #070b16;
-        --bg-2: #0b132b;
-        --line: rgba(255, 255, 255, 0.18);
-        --text: #f4f7ff;
-        --muted: #b1bdd8;
-        --accent: #69e6ff;
-        --accent-2: #8d7dff;
+        --paper: #f8f8f6;
+        --ink: #14171f;
+        --muted: #3f4652;
+        --line: #1b1d24;
+        --accent: #ff4b4b;
       }
 
       * {
@@ -31,196 +29,278 @@
       html,
       body {
         margin: 0;
-        width: 100%;
         min-height: 100%;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
-          'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
-        color: var(--text);
-        background:
-          radial-gradient(circle at 15% 20%, rgba(105, 230, 255, 0.24), transparent 40%),
-          radial-gradient(circle at 90% 0%, rgba(141, 125, 255, 0.28), transparent 45%),
-          linear-gradient(120deg, var(--bg-1) 10%, var(--bg-2) 90%);
+        color: var(--ink);
+        background-color: var(--paper);
+        background-image: radial-gradient(rgba(20, 23, 31, 0.08) 1px, transparent 1px);
+        background-size: 22px 22px;
+        font-family: 'Comic Sans MS', 'Segoe Print', 'PingFang SC', 'Microsoft YaHei', sans-serif;
       }
 
       body {
-        display: grid;
-        place-items: center;
-        padding: 24px;
-      }
-
-      .shell {
-        width: min(1100px, 100%);
-        min-height: min(92vh, 760px);
-        border: 1px solid var(--line);
-        border-radius: 28px;
-        background: linear-gradient(150deg, rgba(15, 25, 53, 0.88), rgba(8, 14, 31, 0.9));
-        box-shadow:
-          0 30px 60px rgba(0, 0, 0, 0.45),
-          inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        min-height: 100vh;
         display: flex;
-        flex-direction: column;
         justify-content: center;
-        gap: 28px;
-        padding: clamp(28px, 4vw, 56px);
-        position: relative;
-        overflow: hidden;
+        padding: 20px;
       }
 
-      .shell::before,
-      .shell::after {
-        content: '';
-        position: absolute;
-        width: 320px;
-        height: 320px;
-        border-radius: 999px;
-        filter: blur(80px);
-        opacity: 0.32;
-        z-index: 0;
-      }
-
-      .shell::before {
-        background: var(--accent);
-        top: -120px;
-        right: -80px;
-      }
-
-      .shell::after {
-        background: var(--accent-2);
-        bottom: -120px;
-        left: -80px;
-      }
-
-      .content {
-        position: relative;
-        z-index: 1;
+      .page {
+        width: min(1200px, 100%);
+        min-height: calc(100vh - 40px);
         display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 28px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         gap: 20px;
       }
 
-      .badge {
-        display: inline-flex;
-        width: fit-content;
-        padding: 8px 14px;
+      .logo {
+        border: 3px solid var(--line);
         border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.24);
-        background: rgba(255, 255, 255, 0.06);
-        color: #d7e5ff;
-        font-size: 13px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+        padding: 8px 18px;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1;
+        text-decoration: none;
+        color: var(--ink);
+        display: inline-flex;
+        transform: rotate(-2deg);
+      }
+
+      .menu {
+        display: flex;
+        gap: 34px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .menu a {
+        color: var(--ink);
+        text-decoration: none;
+        font-size: 33px;
+      }
+
+      .outline-btn {
+        border: 4px solid var(--line);
+        color: var(--ink);
+        background: #fff;
+        box-shadow: 5px 5px 0 var(--line);
+        text-decoration: none;
+        padding: 10px 26px;
+        font-size: 38px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(420px, 1fr) minmax(420px, 1fr);
+        gap: 30px;
+        align-items: center;
       }
 
       h1 {
         margin: 0;
-        font-size: clamp(36px, 6vw, 68px);
-        line-height: 1.06;
-        letter-spacing: -0.02em;
-        max-width: 14ch;
+        font-size: clamp(56px, 7.2vw, 122px);
+        line-height: 0.95;
+        letter-spacing: 0.01em;
       }
 
-      p {
-        margin: 0;
+      h1 .mark {
+        color: var(--accent);
+      }
+
+      .desc {
+        margin: 22px 0 0;
+        max-width: 16ch;
         color: var(--muted);
-        font-size: clamp(15px, 2.3vw, 20px);
-        line-height: 1.7;
-        max-width: 62ch;
+        font-size: clamp(24px, 2.4vw, 42px);
+        line-height: 1.32;
       }
 
-      .meta {
+      .actions {
+        margin-top: 26px;
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .secondary-btn {
+        border: 3px solid var(--line);
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        padding: 10px 22px;
+        font-size: 28px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .stats {
+        margin-top: 26px;
+        font-size: clamp(20px, 2vw, 34px);
+        color: var(--ink);
+      }
+
+      .showcase {
+        border: 4px solid var(--line);
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 8px 8px 0 rgba(20, 23, 31, 0.8);
+        padding: 18px;
+        position: relative;
+        min-height: min(56vh, 560px);
+      }
+
+      .frame {
+        height: 100%;
+        border: 3px dashed rgba(27, 29, 36, 0.35);
+        border-radius: 12px;
+        padding: 22px;
+        display: grid;
+        gap: 18px;
+        align-content: start;
+      }
+
+      .frame h2 {
+        margin: 0;
+        font-size: clamp(30px, 3vw, 48px);
+      }
+
+      .chips {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
       }
 
-      .meta span {
-        padding: 8px 12px;
+      .chips span {
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-size: clamp(17px, 1.5vw, 24px);
+        background: #f7f7f7;
+      }
+
+      .card {
+        border: 3px solid var(--line);
         border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        background: rgba(255, 255, 255, 0.05);
-        font-size: 13px;
-        color: #dbe6ff;
+        background: #fbfbfb;
+        padding: 12px 14px;
+        font-size: clamp(19px, 1.7vw, 28px);
+        line-height: 1.35;
       }
 
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
+      .dot {
+        position: absolute;
+        width: clamp(80px, 10vw, 140px);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        right: -16px;
+        bottom: -16px;
+        border: 4px solid var(--line);
+        background: var(--accent);
       }
 
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 14px 22px;
-        border-radius: 12px;
-        border: 1px solid transparent;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 16px;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-      }
-
-      .btn-primary {
-        color: #06152b;
-        background: linear-gradient(95deg, #64edff, #9db6ff 55%, #a385ff);
-        box-shadow: 0 12px 24px rgba(72, 178, 255, 0.35);
-      }
-
-      .btn-secondary {
-        color: #dbe5ff;
-        border-color: rgba(255, 255, 255, 0.3);
-        background: rgba(255, 255, 255, 0.06);
-      }
-
-      .btn:hover {
-        transform: translateY(-2px);
-      }
-
-      .btn-secondary:hover {
-        border-color: rgba(255, 255, 255, 0.55);
-      }
-
-      @media (max-width: 768px) {
-        .shell {
-          min-height: auto;
-          border-radius: 22px;
-          padding: 24px;
+      @media (max-width: 1080px) {
+        .menu {
+          display: none;
         }
 
-        .actions,
-        .meta {
+        .hero {
+          grid-template-columns: 1fr;
+          align-items: start;
+        }
+
+        .showcase {
+          min-height: auto;
+        }
+      }
+
+      @media (max-width: 700px) {
+        body {
+          padding: 14px;
+        }
+
+        .page {
+          min-height: auto;
+          gap: 18px;
+        }
+
+        .topbar {
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+
+        .outline-btn,
+        .secondary-btn,
+        .logo {
+          font-size: 24px;
+        }
+
+        .actions {
           flex-direction: column;
           align-items: stretch;
         }
 
-        .btn {
+        .outline-btn,
+        .secondary-btn {
           width: 100%;
         }
       }
     </style>
   </head>
   <body>
-    <main class="shell" aria-label="WeaveFox 产品介绍页面">
-      <section class="content">
-        <span class="badge">AI Agent Infra</span>
-        <h1>Build Reliable AI Agent Systems with WeaveFox</h1>
-        <p>
-          WeaveFox 专注于 AI Agent 基础设施，帮助团队快速构建、调试、评估和演进面向真实业务的智能体系统。
-          从开发到上线，提供更稳定、更可控、更高性能的工程化支撑。
-        </p>
-        <div class="meta" aria-label="产品能力标签">
-          <span>Agent Development</span>
-          <span>Evaluation & Observability</span>
-          <span>Production Reliability</span>
+    <main class="page" aria-label="WeaveFox 主页">
+      <header class="topbar">
+        <a class="logo" href="https://www.weavefox.cn/" target="_blank" rel="noopener noreferrer">WeaveFox</a>
+        <nav class="menu" aria-label="页面导航">
+          <a href="https://www.weavefox.cn/" target="_blank" rel="noopener noreferrer">Features</a>
+          <a href="https://docs.weavefox.ai/" target="_blank" rel="noopener noreferrer">Docs</a>
+          <a href="https://www.weavefox.cn/" target="_blank" rel="noopener noreferrer">How it Works</a>
+          <a href="https://docs.weavefox.ai/" target="_blank" rel="noopener noreferrer">FAQ</a>
+        </nav>
+        <a class="outline-btn" href="https://www.weavefox.cn/" target="_blank" rel="noopener noreferrer">Get Started</a>
+      </header>
+
+      <section class="hero">
+        <div>
+          <h1>Build AI Agents<br />for Real Work<span class="mark">!</span></h1>
+          <p class="desc">
+            WeaveFox 提供 Agent Framework、评测与观测能力，以及稳定的生产运行支撑，帮助团队把 AI 应用真正交付上线。
+          </p>
+          <div class="actions">
+            <a class="outline-btn" href="https://www.weavefox.cn/" target="_blank" rel="noopener noreferrer">
+              访问 WeaveFox 官网
+            </a>
+            <a class="secondary-btn" href="https://docs.weavefox.ai/" target="_blank" rel="noopener noreferrer">
+              查看产品文档
+            </a>
+          </div>
+          <p class="stats">Join teams building production-ready AI Agents with WeaveFox.</p>
         </div>
-        <div class="actions">
-          <a class="btn btn-primary" href="https://www.weavefox.cn/" target="_blank" rel="noopener noreferrer">
-            访问 WeaveFox 官网
-          </a>
-          <a class="btn btn-secondary" href="https://docs.weavefox.ai/" target="_blank" rel="noopener noreferrer">
-            查看产品文档
-          </a>
-        </div>
+
+        <aside class="showcase" aria-label="WeaveFox 能力示意图">
+          <div class="frame">
+            <h2>WeaveFox AI Agent Platform</h2>
+            <div class="chips">
+              <span>Agent Development</span>
+              <span>Tool Calling</span>
+              <span>Workflow Orchestration</span>
+            </div>
+            <div class="card">Observability & Eval：追踪推理路径、监控质量指标、快速定位线上问题。</div>
+            <div class="card">Production Reliability：可扩展部署、策略控制与安全治理。</div>
+          </div>
+          <span class="dot" aria-hidden="true"></span>
+        </aside>
       </section>
     </main>
   </body>
