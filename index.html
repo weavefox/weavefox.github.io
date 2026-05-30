@@ -1,40 +1,124 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WeaveFox</title>
-    <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://mdn.alipayobjects.com/huamei_291gks/afts/img/A*aXZnQ7ncguMAAAAAAAAAAAAADiqGAQ/original">
+    <link rel="icon" class="js-site-favicon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="%230f0f0f"/><path d="M19 18h9l4 10 4-10h9l-9 28h-8z" fill="%23ffffff"/></svg>'>
     <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
-        background: black;
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: #000;
         font-size: 24px;
         color: #fff;
         text-align: center;
-        margin-top: 30vh;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+          "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
       }
+
+      .hero {
+        width: min(100%, 720px);
+        padding: 40px 24px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+      }
+
+      .logo {
+        width: 96px;
+        height: 96px;
+        margin: 0 auto;
+      }
+
+      h2 {
+        margin: 20px 0 12px;
+        font-size: clamp(28px, 4vw, 36px);
+      }
+
+      p {
+        margin: 0 0 28px;
+        font-size: clamp(16px, 2.5vw, 20px);
+        color: #d8d8d8;
+      }
+
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
       a {
-        font-size: 16px;
-        color: #bbb;
+        padding: 10px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+        font-size: 15px;
+        line-height: 1.4;
+        color: #d2d2d2;
+        text-decoration: none;
+        transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+      }
+
+      a:hover {
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.28);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      @media (max-width: 640px) {
+        body {
+          padding: 16px;
+        }
+
+        .hero {
+          padding: 32px 18px;
+          border-radius: 20px;
+        }
+
+        .links {
+          flex-direction: column;
+        }
+
+        a {
+          width: 100%;
+        }
       }
     </style>
   </head>
   <body>
-    <img
-      src="https://mdn.alipayobjects.com/huamei_291gks/afts/img/A*aXZnQ7ncguMAAAAAAAAAAAAADiqGAQ/original"
-      width="160"
-    />
-    <h2>🌸 Weavefox 于 2026-03-21 全新上线</h2>
-    <p>你的创意，值得让全世界看到</p>
-    <div style="display: flex; justify-content: space-around; width: 30vw; margin: 0 auto;">
-      <a href="https://x.com/weavefox" target="_blank">
-        https://x.com/weavefox
-      </a>
-      <a href="https://www.weavefox.cn" target="_blank">
-        官网：https://www.weavefox.cn
-      </a>
-      <a href="https://docs.weavefox.ai" target="_blank">
-        文档：https://docs.weavefox.ai
-      </a>
-    </div>
+    <main class="hero">
+      <img
+        class="logo"
+        alt="WeaveFox"
+        src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><rect width="96" height="96" rx="28" fill="%230f0f0f"/><rect x="1.5" y="1.5" width="93" height="93" rx="26.5" fill="none" stroke="rgba(255,255,255,0.12)"/><path d="M27 26h13l8 20 8-20h13L56 70H40z" fill="%23ffffff"/></svg>'
+      />
+      <h2>🌸 Weavefox 于 2026-03-21 全新上线</h2>
+      <p>你的创意，值得让全世界看到</p>
+      <div class="links">
+        <a href="https://x.com/weavefox" target="_blank" rel="noreferrer">
+          https://x.com/weavefox
+        </a>
+        <a href="https://www.weavefox.cn" target="_blank" rel="noreferrer">
+          官网：https://www.weavefox.cn
+        </a>
+        <a href="https://docs.weavefox.ai" target="_blank" rel="noreferrer">
+          文档：https://docs.weavefox.ai
+        </a>
+      </div>
+    </main>
     <script>
       setTimeout(function() {
         window.location = 'https://www.weavefox.cn';
